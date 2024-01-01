@@ -6,6 +6,7 @@ const select = document.querySelector('#select');
 const eraser = document.querySelector('#eraser');
 const special = document.querySelector('#special');
 const defaultColor = document.querySelector('#default');
+const clear = document.querySelector('#clear');
 
 function gridGenerator(squares){
     const area = squares**2;
@@ -14,7 +15,7 @@ function gridGenerator(squares){
         const div = document.createElement('div');
         div.className = "grid";
         div.style.width = `${(width-6)/squares}px`;
-        div.style.height = `${(height-6)/squares}px`;
+        div.style.height = `${(height)/squares}px`;
         container.appendChild(div);
     };
 };
@@ -63,6 +64,15 @@ special.addEventListener('click', ()=>{
 });
 
 defaultColor.addEventListener('click', ()=>{
+    colorGrid('black');
+});
+
+clear.addEventListener('click', ()=>{
+    const grid = document.querySelectorAll('.grid');
+    grid.forEach((item)=>{
+        item.style.backgroundColor = 'white';
+    });
+
     colorGrid('black');
 });
 
